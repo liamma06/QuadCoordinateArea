@@ -10,6 +10,7 @@ public class CoordArea implements ActionListener, ChangeListener{
     JFrame theframe = new JFrame("Quadralateral Coordinate Calculator Program");
     JPanel thepanel = new JPanel();
     JMenuBar menuBar = new JMenuBar();
+    JMenu homeMenu = new JMenu("Home");
     JMenu helpMenu = new JMenu("Help");
     JMenu aboutMenu = new JMenu("About");
     JMenu quizMenu = new JMenu("Quiz");
@@ -203,7 +204,8 @@ public class CoordArea implements ActionListener, ChangeListener{
             AniPanel.PointDx = 665;
             AniPanel.PointDy = 265;
 
-            ResultsArea.setText("clal");
+            ResultsArea.setText("Area: ");
+            ResultsPeri.setText("Perimeter: ");
 
             AniPanel.repaint();
             theframe.repaint();
@@ -211,7 +213,6 @@ public class CoordArea implements ActionListener, ChangeListener{
         }
         //Start Calculation button
         else if(evt.getSource() == startCalc){
-            theTimer.stop();
 
             //Area Calculation
             dblArea = 0.5*((AxVal*ByVal + BxVal*CyVal + CxVal*DyVal + DxVal*AyVal) - (AyVal*BxVal + ByVal*CxVal + CyVal*DxVal + DyVal*AxVal));
@@ -475,6 +476,9 @@ public class CoordArea implements ActionListener, ChangeListener{
 
 
         //Menu bar
+        //home
+        menuBar.add(homeMenu);
+        homeMenu.addActionListener(this);
         //About
         menuBar.add(aboutMenu);
         aboutMenu.addActionListener(this);
