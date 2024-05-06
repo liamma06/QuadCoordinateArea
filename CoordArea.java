@@ -66,7 +66,18 @@ public class CoordArea implements ActionListener, ChangeListener{
         if(evt.getSource() == AxTxtField){
             try{
                 AxVal = Integer.parseInt(AxTxtField.getText());
-                AxSlider.setValue(AxVal);
+                if(AxVal > 10){
+                    AxVal = 10;
+                    AxTxtField.setText("10");
+                    AxSlider.setValue(10);
+                }else if(AxVal < -10){
+                    AxVal = -10;
+                    AxTxtField.setText("-10");
+                    AxSlider.setValue(10);
+                }else{
+                    AxSlider.setValue(AxVal);
+                }
+                
             }catch(NumberFormatException e){
                 AxTxtField.setText("0");
                 AxSlider.setValue(0);
@@ -74,7 +85,17 @@ public class CoordArea implements ActionListener, ChangeListener{
         }else if(evt.getSource() == AyTxtField){
             try{
                 AyVal = Integer.parseInt(AyTxtField.getText());
-                AySlider.setValue(AyVal);
+                if(AyVal > 10){
+                    AyVal = 10;
+                    AyTxtField.setText("10");
+                    AySlider.setValue(10);
+                }else if(AyVal < -10){
+                    AyVal = -10;
+                    AyTxtField.setText("-10");
+                    AySlider.setValue(10);
+                }else{
+                    AySlider.setValue(AyVal);
+                }
             }catch(NumberFormatException e){
                 AyTxtField.setText("0");
                 AySlider.setValue(0);
@@ -82,7 +103,17 @@ public class CoordArea implements ActionListener, ChangeListener{
         }else if(evt.getSource() == ByTxtField){
             try{
                 int ByVal = Integer.parseInt(ByTxtField.getText());
-                BySlider.setValue(ByVal);
+                if(ByVal > 10){
+                    ByVal = 10;
+                    ByTxtField.setText("10");
+                    BySlider.setValue(10);
+                }else if(ByVal < -10){
+                    ByVal = -10;
+                    ByTxtField.setText("-10");
+                    BySlider.setValue(10);
+                }else{
+                    BySlider.setValue(ByVal);
+                }
             }catch(NumberFormatException e){
                 ByTxtField.setText("0");
                 BySlider.setValue(0);
@@ -90,7 +121,17 @@ public class CoordArea implements ActionListener, ChangeListener{
         }else if(evt.getSource() == BxTxtField){
             try{
                 int BxVal = Integer.parseInt(BxTxtField.getText());
-                BxSlider.setValue(BxVal);
+                if(BxVal > 10){
+                    BxVal = 10;
+                    BxTxtField.setText("10");
+                    BxSlider.setValue(10);
+                }else if(BxVal < -10){
+                    BxVal = -10;
+                    BxTxtField.setText("-10");
+                    BxSlider.setValue(10);
+                }else{
+                    BxSlider.setValue(BxVal);
+                }
             }catch(NumberFormatException e){
                 BxTxtField.setText("0");
                 BxSlider.setValue(0);
@@ -98,7 +139,17 @@ public class CoordArea implements ActionListener, ChangeListener{
         }else if(evt.getSource() == CyTxtField){
             try{
                 int CyVal = Integer.parseInt(CyTxtField.getText());
-                CySlider.setValue(CyVal);
+                if(CyVal > 10){
+                    CyVal = 10;
+                    CyTxtField.setText("10");
+                    CySlider.setValue(10);
+                }else if(CyVal < -10){
+                    CyVal = -10;
+                    CyTxtField.setText("-10");
+                    CySlider.setValue(10);
+                }else{
+                    CySlider.setValue(CyVal);
+                }
             }catch(NumberFormatException e){
                 CyTxtField.setText("0");
                 CySlider.setValue(0);
@@ -106,7 +157,17 @@ public class CoordArea implements ActionListener, ChangeListener{
         }else if(evt.getSource() == CxTxtField){
             try{
                 int CxVal = Integer.parseInt(CxTxtField.getText());
-                CxSlider.setValue(CxVal);
+                if(CxVal > 10){
+                    CxVal = 10;
+                    CxTxtField.setText("10");
+                    CxSlider.setValue(10);
+                }else if(CxVal < -10){
+                    CxVal = -10;
+                    CxTxtField.setText("-10");
+                    CxSlider.setValue(10);
+                }else{
+                    CxSlider.setValue(CxVal);
+                }
             }catch(NumberFormatException e){
                 CxTxtField.setText("0");
                 CxSlider.setValue(0);
@@ -114,7 +175,17 @@ public class CoordArea implements ActionListener, ChangeListener{
         }else if(evt.getSource() == DyTxtField){
             try{
                 int DyVal = Integer.parseInt(DyTxtField.getText());
-                DySlider.setValue(DyVal);
+                if(DyVal > 10){
+                    DyVal = 10;
+                    DyTxtField.setText("10");
+                    DySlider.setValue(10);
+                }else if(DyVal < -10){
+                    DyVal = -10;
+                    DyTxtField.setText("-10");
+                    DySlider.setValue(10);
+                }else{
+                    DySlider.setValue(DyVal);
+                }
             }catch(NumberFormatException e){
                 DyTxtField.setText("0");
                 DySlider.setValue(0);
@@ -122,7 +193,17 @@ public class CoordArea implements ActionListener, ChangeListener{
         }else if(evt.getSource() == DxTxtField){
             try{
                 int DxVal = Integer.parseInt(DxTxtField.getText());
-                DxSlider.setValue(DxVal);
+                if(DxVal > 10){
+                    DxVal = 10;
+                    DxTxtField.setText("10");
+                    DxSlider.setValue(10);
+                }else if(DxVal < -10){
+                    DxVal = -10;
+                    DxTxtField.setText("-10");
+                    DxSlider.setValue(10);
+                }else{
+                    DxSlider.setValue(DxVal);
+                }
             }catch(NumberFormatException e){
                 DxTxtField.setText("0");
                 DxSlider.setValue(0);
@@ -265,20 +346,20 @@ public class CoordArea implements ActionListener, ChangeListener{
         thepanel.setLayout(new BorderLayout());
 
         //Point A 
-        ALabel = new JLabel("Point A: (     ,     )");
+        ALabel = new JLabel("Point A: (       ,       )");
         ALabel.setSize(200,50);
         ALabel.setLocation(30,0);
         thepanel.add(ALabel);
 
         AxTxtField = new JTextField("0");
-        AxTxtField.setSize(17,17);
+        AxTxtField.setSize(22,17);
         AxTxtField.setLocation(85,17);
         AxTxtField.addActionListener(this);
         thepanel.add(AxTxtField); 
 
         AyTxtField = new JTextField("0");
-        AyTxtField.setSize(17,17);
-        AyTxtField.setLocation(105,17);
+        AyTxtField.setSize(22,17);
+        AyTxtField.setLocation(113,17);
         AyTxtField.addActionListener(this);
         thepanel.add(AyTxtField);
 
@@ -311,20 +392,20 @@ public class CoordArea implements ActionListener, ChangeListener{
         thepanel.add(AySlider);
 
         //Point B
-        BLabel = new JLabel("Point B: (     ,     )");
+        BLabel = new JLabel("Point B: (       ,       )");
         BLabel.setSize(200,50);
         BLabel.setLocation(30,85);
         thepanel.add(BLabel);
 
         BxTxtField = new JTextField("0");
-        BxTxtField.setSize(17,17);
+        BxTxtField.setSize(22,17);
         BxTxtField.setLocation(85,102);
         BxTxtField.addActionListener(this);
         thepanel.add(BxTxtField); 
 
         ByTxtField = new JTextField("0");
-        ByTxtField.setSize(17,17);
-        ByTxtField.setLocation(105,102);
+        ByTxtField.setSize(22,17);
+        ByTxtField.setLocation(113,102);
         ByTxtField.addActionListener(this);
         thepanel.add(ByTxtField);
 
@@ -357,20 +438,20 @@ public class CoordArea implements ActionListener, ChangeListener{
         thepanel.add(BySlider);
 
         //Point C 
-        CLabel = new JLabel("Point C: (     ,     )");
+        CLabel = new JLabel("Point C: (       ,       )");
         CLabel.setSize(200,50);
         CLabel.setLocation(30,170);
         thepanel.add(CLabel);
 
         CxTxtField = new JTextField("0");
-        CxTxtField.setSize(17,17);
+        CxTxtField.setSize(22,17);
         CxTxtField.setLocation(85,187);
         CxTxtField.addActionListener(this);
         thepanel.add(CxTxtField); 
 
         CyTxtField = new JTextField("0");
-        CyTxtField.setSize(17,17);
-        CyTxtField.setLocation(105,187);
+        CyTxtField.setSize(22,17);
+        CyTxtField.setLocation(113,187);
         CyTxtField.addActionListener(this);
         thepanel.add(CyTxtField);
 
@@ -403,20 +484,20 @@ public class CoordArea implements ActionListener, ChangeListener{
         thepanel.add(CySlider);
 
         //Point D
-        DLabel = new JLabel("Point D: (     ,     )");
+        DLabel = new JLabel("Point D: (       ,       )");
         DLabel.setSize(200,50);
         DLabel.setLocation(30,255);
         thepanel.add(DLabel);
 
         DxTxtField = new JTextField("0");
-        DxTxtField.setSize(17,17);
+        DxTxtField.setSize(22,17);
         DxTxtField.setLocation(85,272);
         DxTxtField.addActionListener(this);
         thepanel.add(DxTxtField); 
 
         DyTxtField = new JTextField("0");
-        DyTxtField.setSize(17,17);
-        DyTxtField.setLocation(105,272);
+        DyTxtField.setSize(22,17);
+        DyTxtField.setLocation(113,272);
         DyTxtField.addActionListener(this);
         thepanel.add(DyTxtField);
 

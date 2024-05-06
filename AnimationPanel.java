@@ -65,22 +65,22 @@ public class AnimationPanel extends JPanel{
         //Drawing point A
         g.setColor(Color.BLUE);
         g.fillOval(PointAx,PointAy,10,10);
-        g.fillOval(130,22,10,10);
+        g.fillOval(140,22,10,10);
         
         //Drawing point B
         g.setColor(Color.GREEN);
         g.fillOval(PointBx,PointBy,10,10);
-        g.fillOval(130,107,10,10);
+        g.fillOval(140,107,10,10);
 
         //Drawing point C
         g.setColor(Color.YELLOW);
         g.fillOval(PointCx,PointCy,10,10);
-        g.fillOval(130,192,10,10);
+        g.fillOval(140,192,10,10);
 
         //Drawing point D
         g.setColor(Color.RED);
         g.fillOval(PointDx,PointDy,10,10);
-        g.fillOval(130,277,10,10);
+        g.fillOval(140,277,10,10);
 
         //Drawing Lines between A-B, B-C, C-D, D-A
         g.setColor(Color.BLACK);
