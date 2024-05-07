@@ -5,17 +5,20 @@ import javax.swing.event.*;
 import java.math.*;
 import java.text.DecimalFormat;
 
-public class CoordArea implements ActionListener, ChangeListener{
+public class CoordArea implements ActionListener, ChangeListener, MouseListener{
     //Properties
     JFrame theframe = new JFrame("Quadralateral Coordinate Calculator Program");
     JPanel thepanel = new JPanel();
     JMenuBar menuBar = new JMenuBar();
     JMenu homeMenu = new JMenu("Home");
     JMenu helpMenu = new JMenu("Help");
+    JPanel helpPanel = new JPanel();
     JMenu aboutMenu = new JMenu("About");
+    JPanel aboutPanel = new JPanel();
     JMenu quizMenu = new JMenu("Quiz");
-    JMenuItem quizItem = new JMenuItem("Quiz");
-    JMenuItem scoresItem = new JMenuItem("Scores");
+    JPanel quizPanel = new JPanel();
+    JMenu scoresMenu = new JMenu("Scores");
+    JPanel scoresPanel = new JPanel();
     Timer theTimer = new Timer(1000/48,this);
     JTextField AxTxtField;
     JTextField AyTxtField;
@@ -60,6 +63,14 @@ public class CoordArea implements ActionListener, ChangeListener{
     Double dblPeri = 0.0;
     JLabel ResultsArea;
     JLabel ResultsPeri;
+
+    JLabel quizTitleLabel;
+    JLabel questionLabel1, questionLabel2, questionLabel3, questionLabel4;
+    JRadioButton optionA1, optionB1, optionC1, optionD1;
+    JRadioButton optionA2, optionB2, optionC2, optionD2;
+    JRadioButton optionA3, optionB3, optionC3, optionD3;
+    JRadioButton optionA4, optionB4, optionC4, optionD4;
+    JButton submit;
 
     //Methods
     public void actionPerformed(ActionEvent evt){
@@ -216,7 +227,8 @@ public class CoordArea implements ActionListener, ChangeListener{
                 AniPanel.PointAx = AniPanel.PointAx + 1;
             }else if((AxVal*22)+665 < AniPanel.PointAx){
                 AniPanel.PointAx = AniPanel.PointAx -1;
-            }else if(265 - (AyVal*22)  < AniPanel.PointAy){
+            }
+            if(265 - (AyVal*22)  < AniPanel.PointAy){
                 AniPanel.PointAy = AniPanel.PointAy - 1;
             }else if(265 - (AyVal*22)  > AniPanel.PointAy){
                 AniPanel.PointAy = AniPanel.PointAy + 1;
@@ -226,7 +238,8 @@ public class CoordArea implements ActionListener, ChangeListener{
                 AniPanel.PointBx = AniPanel.PointBx + 1;
             }else if((BxVal*22)+665 < AniPanel.PointBx){
                 AniPanel.PointBx = AniPanel.PointBx -1;
-            }else if(265 - (ByVal*22)  < AniPanel.PointBy){
+            }
+            if(265 - (ByVal*22)  < AniPanel.PointBy){
                 AniPanel.PointBy = AniPanel.PointBy - 1;
             }else if(265 - (ByVal*22)  > AniPanel.PointBy){
                 AniPanel.PointBy = AniPanel.PointBy + 1;
@@ -236,7 +249,8 @@ public class CoordArea implements ActionListener, ChangeListener{
                 AniPanel.PointCx = AniPanel.PointCx + 1;
             }else if((CxVal*22)+665 < AniPanel.PointCx){
                 AniPanel.PointCx = AniPanel.PointCx -1;
-            }else if(265 - (CyVal*22)  < AniPanel.PointCy){
+            }
+            if(265 - (CyVal*22)  < AniPanel.PointCy){
                 AniPanel.PointCy = AniPanel.PointCy - 1;
             }else if(265 - (CyVal*22)  > AniPanel.PointCy){
                 AniPanel.PointCy = AniPanel.PointCy + 1;
@@ -246,7 +260,8 @@ public class CoordArea implements ActionListener, ChangeListener{
                 AniPanel.PointDx = AniPanel.PointDx + 1;
             }else if((DxVal*22)+665 < AniPanel.PointDx){
                 AniPanel.PointDx = AniPanel.PointDx -1;
-            }else if(265 - (DyVal*22)  < AniPanel.PointDy){
+            }
+            if(265 - (DyVal*22)  < AniPanel.PointDy){
                 AniPanel.PointDy = AniPanel.PointDy - 1;
             }else if(265 - (DyVal*22)  > AniPanel.PointDy){
                 AniPanel.PointDy = AniPanel.PointDy + 1;
@@ -307,10 +322,96 @@ public class CoordArea implements ActionListener, ChangeListener{
 
             dblPeri = AB + BC + CD + DA;
             ResultsPeri.setText("Perimeter: "+new DecimalFormat("##.##").format(dblPeri)+" units");
-
         }
+        
+    }
+
+    public void mouseReleased(MouseEvent evt){
 
     }
+
+    public void mousePressed(MouseEvent evt){
+
+    }
+
+    public void mouseExited(MouseEvent evt){
+
+    }
+
+    public void mouseEntered(MouseEvent evt){
+
+    }
+
+    public void mouseClicked(MouseEvent evt){
+        //home Menu 
+        if(evt.getSource() == homeMenu){
+            System.out.println("home menu");
+            theframe.setContentPane(thepanel);
+            AxTxtField.setText("0");
+            AxSlider.setValue(0);
+            AyTxtField.setText("0");
+            AySlider.setValue(0);
+            AniPanel.PointAx = 665;
+            AniPanel.PointAy = 265;
+
+            BxTxtField.setText("0");
+            BxSlider.setValue(0);
+            ByTxtField.setText("0");
+            BySlider.setValue(0);
+            AniPanel.PointBx = 665;
+            AniPanel.PointBy = 265;
+
+            CxTxtField.setText("0");
+            CxSlider.setValue(0);
+            CyTxtField.setText("0");
+            CySlider.setValue(0);
+            AniPanel.PointCx = 665;
+            AniPanel.PointCy = 265;
+
+            DxTxtField.setText("0");
+            DxSlider.setValue(0);
+            DyTxtField.setText("0");
+            DySlider.setValue(0);
+            AniPanel.PointDx = 665;
+            AniPanel.PointDy = 265;
+
+            ResultsArea.setText("Area: ");
+            ResultsPeri.setText("Perimeter: ");
+
+            AniPanel.repaint();
+            theframe.revalidate();
+            theframe.repaint();
+        }
+        //about menu
+        else if(evt.getSource() == aboutMenu){
+            System.out.println("about menu");
+            theframe.setContentPane(aboutPanel);
+            theframe.revalidate();
+            theframe.repaint();
+        }
+        //help Menu
+        else if(evt.getSource() == helpMenu){
+            System.out.println("help menu");
+            theframe.setContentPane(helpPanel);
+            theframe.revalidate();
+            theframe.repaint();
+        }
+        //scores Menu 
+        else if(evt.getSource() == scoresMenu){
+            System.out.println("scores menu");
+            theframe.setContentPane(scoresPanel);
+            theframe.revalidate();
+            theframe.repaint();
+        }
+        //quiz menu 
+        else if(evt.getSource() == quizMenu){
+            System.out.println("quiz menu");
+            theframe.setContentPane(quizPanel);
+            theframe.revalidate();
+            theframe.repaint();
+        }
+    }
+
     public void stateChanged(ChangeEvent evt){
         if(evt.getSource() == AxSlider){
             AxTxtField.setText(AxSlider.getValue()+"");
@@ -559,21 +660,161 @@ public class CoordArea implements ActionListener, ChangeListener{
         //Menu bar
         //home
         menuBar.add(homeMenu);
-        homeMenu.addActionListener(this);
+        homeMenu.addMouseListener(this);
         //About
         menuBar.add(aboutMenu);
-        aboutMenu.addActionListener(this);
+        //aboutMenu.add(aboutItem);
+        aboutMenu.addMouseListener(this);
+        
         //Help
         menuBar.add(helpMenu);
-        helpMenu.addActionListener(this);
+        helpMenu.addMouseListener(this);
         //Quiz
-        quizMenu.add(quizItem);
-        quizItem.addActionListener(this);
-        quizMenu.add(scoresItem);
-        scoresItem.addActionListener(this);
         menuBar.add(quizMenu);
+        quizMenu.addMouseListener(this);
+
+        //scores
+        menuBar.add(scoresMenu);
+        scoresMenu.addMouseListener(this);
         
         theframe.setJMenuBar(menuBar);
+
+
+        //Quiz Panel
+        quizPanel.setLayout(null);
+
+        quizTitleLabel = new JLabel("Quiz: ");
+        quizTitleLabel.setSize(100,15);
+        quizTitleLabel.setLocation(450,15);
+        quizPanel.add(quizTitleLabel);
+
+        //question 1
+        questionLabel1 = new JLabel("1. What concept is used for calculating the area of the quadralateral on a coordinate system?");
+        questionLabel1.setSize(500,15);
+        questionLabel1.setLocation(20,40);
+        quizPanel.add(questionLabel1);
+
+        optionA1 = new JRadioButton("A: Shoelace formula");
+        optionA1.setSize(250,15);
+        optionA1.setLocation(20,60);
+        quizPanel.add(optionA1);
+        
+        optionB1 = new JRadioButton("B: Pythagorean Theorem");
+        optionB1.setSize(250,15);
+        optionB1.setLocation(20,80);
+        quizPanel.add(optionB1);
+
+        optionC1 = new JRadioButton("C: Parallelogram Rule");
+        optionC1.setSize(250,15);
+        optionC1.setLocation(20,100);
+        quizPanel.add(optionC1);
+        
+        optionD1 = new JRadioButton("D: Heron's formula");
+        optionD1.setSize(250,15);
+        optionD1.setLocation(20,120);
+        quizPanel.add(optionD1);
+
+        ButtonGroup group1 = new ButtonGroup();
+        group1.add(optionA1);
+        group1.add(optionB1);
+        group1.add(optionC1);
+        group1.add(optionD1);
+
+        //question2
+        questionLabel2 = new JLabel("2. What concept is used for calculating the perimeter of the quadralateral?");
+        questionLabel2.setSize(500,15);
+        questionLabel2.setLocation(20,160);
+        quizPanel.add(questionLabel2);
+
+        optionA2 = new JRadioButton("A: Circumference formula");
+        optionA2.setSize(250,15);
+        optionA2.setLocation(20,180);
+        quizPanel.add(optionA2);
+        
+        optionB2 = new JRadioButton("B: Pythagorean Theorem");
+        optionB2.setSize(250,15);
+        optionB2.setLocation(20,200);
+        quizPanel.add(optionB2);
+
+        optionC2 = new JRadioButton("C: Parallelogram Rule");
+        optionC2.setSize(250,15);
+        optionC2.setLocation(20,220);
+        quizPanel.add(optionC2);
+        
+        optionD2 = new JRadioButton("D: Exponential growth formula");
+        optionD2.setSize(250,15);
+        optionD2.setLocation(20,240);
+        quizPanel.add(optionD2);
+
+        ButtonGroup group2 = new ButtonGroup();
+        group2.add(optionA2);
+        group2.add(optionB2);
+        group2.add(optionC2);
+        group2.add(optionD2);
+
+        //question3
+        questionLabel3 = new JLabel("3. To find the perimeter of a quadrailateral in the Cartesian plane, what is the correct sequence of steps?:");
+        questionLabel3.setSize(500,15);
+        questionLabel3.setLocation(20,280);
+        quizPanel.add(questionLabel3);
+
+        optionA3 = new JRadioButton("A: calculate the sum of the lengths of all four sides");
+        optionA3.setSize(400,15);
+        optionA3.setLocation(20,300);
+        quizPanel.add(optionA3);
+        
+        optionB3 = new JRadioButton("B: Subtract each x and y coordinate and add the difference");
+        optionB3.setSize(400,15);
+        optionB3.setLocation(20,320);
+        quizPanel.add(optionB3);
+
+        optionC3 = new JRadioButton("C: multiply he lengths of oppostie sides and add them together");
+        optionC3.setSize(400,15);
+        optionC3.setLocation(20,340);
+        quizPanel.add(optionC3);
+        
+        optionD3 = new JRadioButton("D: Find the distrance between each pair of points, then add them");
+        optionD3.setSize(400,15);
+        optionD3.setLocation(20,360);
+        quizPanel.add(optionD3);
+
+        ButtonGroup group3 = new ButtonGroup();
+        group3.add(optionA3);
+        group3.add(optionB3);
+        group3.add(optionC3);
+        group3.add(optionD3);
+
+        //question4
+        questionLabel4 = new JLabel("4. When does the Pythagorean Theorem work?: ");
+        questionLabel4.setSize(500,15);
+        questionLabel4.setLocation(20,400);
+        quizPanel.add(questionLabel4);
+
+        optionA4 = new JRadioButton("A: All Right Angle triangle");
+        optionA4.setSize(400,15);
+        optionA4.setLocation(20,420);
+        quizPanel.add(optionA4);
+        
+        optionB4 = new JRadioButton("B: All Equilateral triangles");
+        optionB4.setSize(400,15);
+        optionB4.setLocation(20,440);
+        quizPanel.add(optionB4);
+
+        optionC4 = new JRadioButton("C: All Isoceles triangles");
+        optionC4.setSize(400,15);
+        optionC4.setLocation(20,460);
+        quizPanel.add(optionC4);
+        
+        optionD4 = new JRadioButton("D: All Acute triangles");
+        optionD4.setSize(400,15);
+        optionD4.setLocation(20,480);
+        quizPanel.add(optionD4);
+
+        ButtonGroup group4 = new ButtonGroup();
+        group4.add(optionA4);
+        group4.add(optionB4);
+        group4.add(optionC4);
+        group4.add(optionD4);
 
         //Starttimer
         theTimer.start();
