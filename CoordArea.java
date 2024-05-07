@@ -70,8 +70,17 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
     JRadioButton optionA2, optionB2, optionC2, optionD2;
     JRadioButton optionA3, optionB3, optionC3, optionD3;
     JRadioButton optionA4, optionB4, optionC4, optionD4;
-    JButton submit;
-
+    JTextField nameField;
+    JLabel scoreLabel;
+    JLabel nameLabel;
+    JButton submitButton;
+    JButton tryagainButton;
+    ButtonGroup group1;
+    ButtonGroup group2;
+    ButtonGroup group3;
+    ButtonGroup group4;
+    int intscore = 0;
+ 
     //Methods
     public void actionPerformed(ActionEvent evt){
         if(evt.getSource() == AxTxtField){
@@ -322,6 +331,38 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
 
             dblPeri = AB + BC + CD + DA;
             ResultsPeri.setText("Perimeter: "+new DecimalFormat("##.##").format(dblPeri)+" units");
+        }
+        //quiz scores
+        else if(evt.getSource() == optionA1){
+            intscore += 1;
+            System.out.println(intscore);
+        }else if(evt.getSource() == optionB2){
+            intscore += 1;
+            System.out.println(intscore);
+        }else if(evt.getSource() == optionD3){
+            intscore += 1;
+            System.out.println(intscore);
+        }else if(evt.getSource() == optionA4){
+            intscore += 1;
+            System.out.println(intscore);
+        }
+
+        //submit button for quiz
+        else if(evt.getSource() == submitButton){
+            scoreLabel.setText("Score: "+intscore+"  /  4");
+            intscore = 0;
+        }
+        //tryagain button for quiz
+        else if(evt.getSource() == tryagainButton){
+            group1.clearSelection();
+            group2.clearSelection();
+            group3.clearSelection();
+            group4.clearSelection();
+            
+            scoreLabel.setText("Score: 0  /  4");
+            nameField.setText("");
+            
+
         }
         
     }
@@ -690,14 +731,16 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
 
         //question 1
         questionLabel1 = new JLabel("1. What concept is used for calculating the area of the quadralateral on a coordinate system?");
-        questionLabel1.setSize(500,15);
+        questionLabel1.setSize(600,15);
         questionLabel1.setLocation(20,40);
         quizPanel.add(questionLabel1);
 
         optionA1 = new JRadioButton("A: Shoelace formula");
         optionA1.setSize(250,15);
         optionA1.setLocation(20,60);
+        optionA1.addActionListener(this);
         quizPanel.add(optionA1);
+    
         
         optionB1 = new JRadioButton("B: Pythagorean Theorem");
         optionB1.setSize(250,15);
@@ -714,7 +757,7 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         optionD1.setLocation(20,120);
         quizPanel.add(optionD1);
 
-        ButtonGroup group1 = new ButtonGroup();
+        group1 = new ButtonGroup();
         group1.add(optionA1);
         group1.add(optionB1);
         group1.add(optionC1);
@@ -734,6 +777,7 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         optionB2 = new JRadioButton("B: Pythagorean Theorem");
         optionB2.setSize(250,15);
         optionB2.setLocation(20,200);
+        optionB2.addActionListener(this);
         quizPanel.add(optionB2);
 
         optionC2 = new JRadioButton("C: Parallelogram Rule");
@@ -746,7 +790,7 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         optionD2.setLocation(20,240);
         quizPanel.add(optionD2);
 
-        ButtonGroup group2 = new ButtonGroup();
+        group2 = new ButtonGroup();
         group2.add(optionA2);
         group2.add(optionB2);
         group2.add(optionC2);
@@ -776,9 +820,10 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         optionD3 = new JRadioButton("D: Find the distrance between each pair of points, then add them");
         optionD3.setSize(400,15);
         optionD3.setLocation(20,360);
+        optionD3.addActionListener(this);
         quizPanel.add(optionD3);
 
-        ButtonGroup group3 = new ButtonGroup();
+        group3 = new ButtonGroup();
         group3.add(optionA3);
         group3.add(optionB3);
         group3.add(optionC3);
@@ -793,6 +838,7 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         optionA4 = new JRadioButton("A: All Right Angle triangle");
         optionA4.setSize(400,15);
         optionA4.setLocation(20,420);
+        optionA4.addActionListener(this);
         quizPanel.add(optionA4);
         
         optionB4 = new JRadioButton("B: All Equilateral triangles");
@@ -810,11 +856,40 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         optionD4.setLocation(20,480);
         quizPanel.add(optionD4);
 
-        ButtonGroup group4 = new ButtonGroup();
+        group4 = new ButtonGroup();
         group4.add(optionA4);
         group4.add(optionB4);
         group4.add(optionC4);
         group4.add(optionD4);
+
+        //submit button and name input
+        submitButton = new JButton("Submit");
+        submitButton.setSize(100,30);
+        submitButton.setLocation(800,470);
+        submitButton.addActionListener(this);
+        quizPanel.add(submitButton);
+
+
+        scoreLabel = new JLabel("Score: 0  /  4");
+        scoreLabel.setSize(100,20);
+        scoreLabel.setLocation(800,450);
+        quizPanel.add(scoreLabel);
+
+        nameLabel = new JLabel("Name: ");
+        nameLabel.setSize(50,15);
+        nameLabel.setLocation(770,15);
+        quizPanel.add(nameLabel);
+
+        nameField = new JTextField("");
+        nameField.setSize(120,20);
+        nameField.setLocation(820,13);
+        quizPanel.add(nameField);
+
+        tryagainButton = new JButton("Try again");
+        tryagainButton.setSize(100,30);
+        tryagainButton.setLocation(800,500);
+        tryagainButton.addActionListener(this);
+        quizPanel.add(tryagainButton);
 
         //Starttimer
         theTimer.start();
