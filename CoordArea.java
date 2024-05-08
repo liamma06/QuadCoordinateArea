@@ -1,8 +1,8 @@
 import java.awt.*;
+import java.io.*;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.event.*;
-import java.math.*;
 import java.text.DecimalFormat;
 
 public class CoordArea implements ActionListener, ChangeListener, MouseListener{
@@ -80,6 +80,16 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
     ButtonGroup group3;
     ButtonGroup group4;
     int intscore = 0;
+
+    PrintWriter txtscores;
+    BufferedReader txtscoresOut;
+
+    JTextArea scoresTextArea;
+    JScrollPane scoresScroll;
+    String strLine;
+    JLabel scoreTitleLabel;
+    
+    
  
     //Methods
     public void actionPerformed(ActionEvent evt){
@@ -335,21 +345,28 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         //quiz scores
         else if(evt.getSource() == optionA1){
             intscore += 1;
-            System.out.println(intscore);
         }else if(evt.getSource() == optionB2){
             intscore += 1;
-            System.out.println(intscore);
         }else if(evt.getSource() == optionD3){
             intscore += 1;
-            System.out.println(intscore);
         }else if(evt.getSource() == optionA4){
             intscore += 1;
-            System.out.println(intscore);
         }
 
         //submit button for quiz
         else if(evt.getSource() == submitButton){
             scoreLabel.setText("Score: "+intscore+"  /  4");
+
+            try{
+                txtscores= new PrintWriter(new FileWriter("scores.txt",true));
+                txtscores.println(nameField.getText()+" "+intscore+"/4");
+                System.out.println("scores.txt updated");
+                txtscores.close();
+            }catch(FileNotFoundException e){ 
+                System.out.println("File Not Found: scores.txt");
+            }catch(IOException e){
+                System.out.println("Unable to read from the file or close the file");
+            }
             intscore = 0;
         }
         //tryagain button for quiz
@@ -441,6 +458,22 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         else if(evt.getSource() == scoresMenu){
             System.out.println("scores menu");
             theframe.setContentPane(scoresPanel);
+
+            try{
+                txtscoresOut = new BufferedReader(new FileReader("scores.txt"));
+                strLine = txtscoresOut.readLine();
+                while(strLine != null){
+                    System.out.println(strLine);
+                    scoresTextArea.append(strLine+"\n");
+                    strLine=txtscoresOut.readLine();
+                }
+                txtscoresOut.close();
+               }catch(FileNotFoundException e){ 
+                    System.out.println("File Not Found: todo.txt");
+               }catch(IOException e){
+                    System.out.println("Unable to read from the file or close the file");
+               }
+
             theframe.revalidate();
             theframe.repaint();
         }
@@ -890,6 +923,28 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         tryagainButton.setLocation(800,500);
         tryagainButton.addActionListener(this);
         quizPanel.add(tryagainButton);
+
+        //scores panel
+        scoresPanel.setLayout(null);
+
+        scoreTitleLabel = new JLabel("Scores");
+        scoreTitleLabel.setSize(100,15);
+        scoreTitleLabel.setLocation(450,25);
+        scoresPanel.add(scoreTitleLabel);
+
+
+        scoresTextArea = new JTextArea("");
+        scoresTextArea.setBounds(230, 60, 500, 450); // Set bounds for JTextArea
+        scoresTextArea.setEditable(false);
+        scoresPanel.add(scoresTextArea);
+
+        scoresScroll = new JScrollPane(scoresTextArea);
+        scoresScroll.setBounds(230, 60, 500, 450); // Set bounds for JScrollPane, same as JTextArea
+        scoresScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scoresPanel.add(scoresScroll);
+        
+        
+        theframe.setVisible(true);
 
         //Starttimer
         theTimer.start();
