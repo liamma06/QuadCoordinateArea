@@ -6,30 +6,48 @@ import java.awt.image.*;
 
 public class AnimationPanel extends JPanel{
     //Properties
-    /**  */
+    /**integer for holding the position of Ax */
     public int PointAx = 530/2 +400;
+    /**integer for holding the position of Ay */
     public int PointAy = 530/2;
+    /**integer for holding the position of Bx */
     public int PointBx = 530/2 + 400;
+    /**integer for holding the position of By */
     public int PointBy = 530/2;
+    /**integer for holding the position of Cx */
     public int PointCx = 530/2 + 400;
+    /**integer for holding the position of Cy */
     public int PointCy = 530/2;
+    /**integer for holding the position of Dx */
     public int PointDx = 530/2 + 400;
+    /**integer for holding the position of Dy */
     public int PointDy = 530/2;
+    /**integer holding the width of the graph */
     public int GraphWidth = 540;
+    /**integer holding the height of the graph */
     public int GraphHeight = 540;
+    /**integer holding the lowest x value */
     public int GraphMinX = -12;
+    /**integer holding the highest x value */
     public int GraphMaxX = 12;
+    /**integer holding the lowest y value */
     public int GraphMinY = -12;
+    /**integer holding the highest y value */
     public int GraphMaxY = 12;
+    /**integer holding the origin x value */
     public int GraphOriginX = 540/2;
+    /**integer holding the origin y value */
     public int GraphOriginY = 540/2;
+    /**integer holding pixels between each tick of the grpah */
     public int GraphTickSpacing = 30;
+    /**variable holding the about image */
     BufferedImage imgAbout;
+    /**variable holding the help image */
     BufferedImage imgHelp;
 
 
     //Methods
-
+    /**Drawing the cartesian plane and updating each point */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
@@ -39,7 +57,6 @@ public class AnimationPanel extends JPanel{
             int xPos = GraphOriginX +400+ i *(GraphWidth/(GraphMaxX-GraphMinX));
             g.drawLine(xPos, 0, xPos, GraphHeight);
         }
-
         for(int j = GraphMinY; j <= GraphMaxY; j++){
             int yPos = GraphOriginY - j *(GraphHeight/(GraphMaxY-GraphMinY));
             g.drawLine(0,yPos,GraphWidth+400,yPos);
@@ -91,6 +108,7 @@ public class AnimationPanel extends JPanel{
         g.drawLine(PointCx + 5, PointCy + 5, PointDx + 5, PointDy + 5);
         g.drawLine(PointDx + 5, PointDy + 5, PointAx + 5, PointAy + 5);
 
+        //background of the inputs
         g.setColor(Color.WHITE);
         g.fillRect(50,365,300,150);
 
@@ -99,6 +117,7 @@ public class AnimationPanel extends JPanel{
     //constructor
     public AnimationPanel(){
         super();
+        //inputing the about.jpg and help.png
         try{
 			imgAbout = ImageIO.read(new File("about.jpg"));
             imgHelp = ImageIO.read(new File("help.png"));
