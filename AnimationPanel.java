@@ -6,24 +6,25 @@ import java.awt.image.*;
 
 public class AnimationPanel extends JPanel{
     //Properties
-    BufferedImage imgPlane = null;
-    int PointAx = 530/2 +400;
-    int PointAy = 530/2;
-    int PointBx = 530/2 + 400;
-    int PointBy = 530/2;
-    int PointCx = 530/2 + 400;
-    int PointCy = 530/2;
-    int PointDx = 530/2 + 400;
-    int PointDy = 530/2;
-    int GraphWidth = 540;
-    int GraphHeight = 540;
-    int GraphMinX = -12;
-    int GraphMaxX = 12;
-    int GraphMinY = -12;
-    int GraphMaxY = 12;
-    int GraphOriginX = 540/2;
-    int GraphOriginY = 540/2;
-    int GraphTickSpacing = 30;
+    public int PointAx = 530/2 +400;
+    public int PointAy = 530/2;
+    public int PointBx = 530/2 + 400;
+    public int PointBy = 530/2;
+    public int PointCx = 530/2 + 400;
+    public int PointCy = 530/2;
+    public int PointDx = 530/2 + 400;
+    public int PointDy = 530/2;
+    public int GraphWidth = 540;
+    public int GraphHeight = 540;
+    public int GraphMinX = -12;
+    public int GraphMaxX = 12;
+    public int GraphMinY = -12;
+    public int GraphMaxY = 12;
+    public int GraphOriginX = 540/2;
+    public int GraphOriginY = 540/2;
+    public int GraphTickSpacing = 30;
+    BufferedImage imgAbout;
+    BufferedImage imgHelp;
 
 
     //Methods
@@ -97,6 +98,14 @@ public class AnimationPanel extends JPanel{
     //constructor
     public AnimationPanel(){
         super();
+        try{
+			imgAbout = ImageIO.read(new File("about.jpg"));
+            imgHelp = ImageIO.read(new File("help.png"));
+		}catch(IOException e){
+			System.out.println("Unable to load image");
+			System.out.println(e.toString());
+		}
         
+
     }
 }

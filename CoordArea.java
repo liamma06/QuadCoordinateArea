@@ -7,89 +7,90 @@ import java.text.DecimalFormat;
 
 public class CoordArea implements ActionListener, ChangeListener, MouseListener{
     //Properties
-    JFrame theframe = new JFrame("Quadralateral Coordinate Calculator Program");
-    JPanel thepanel = new JPanel();
-    JMenuBar menuBar = new JMenuBar();
-    JMenu homeMenu = new JMenu("Home");
-    JMenu helpMenu = new JMenu("Help");
-    JPanel helpPanel = new JPanel();
-    JMenu aboutMenu = new JMenu("About");
-    JPanel aboutPanel = new JPanel();
-    JMenu quizMenu = new JMenu("Quiz");
-    JPanel quizPanel = new JPanel();
-    JMenu scoresMenu = new JMenu("Scores");
-    JPanel scoresPanel = new JPanel();
-    Timer theTimer = new Timer(1000/48,this);
-    JTextField AxTxtField;
-    JTextField AyTxtField;
-    JLabel ALabel;
-    JLabel AxLabel;
-    JLabel AyLabel;
-    JSlider AxSlider;
-    JSlider AySlider;
-    int AxVal = 0;
-    int AyVal =0 ;
-    JTextField BxTxtField;
-    JTextField ByTxtField;
-    JLabel BLabel;
-    JLabel BxLabel;
-    JLabel ByLabel;
-    JSlider BxSlider;
-    JSlider BySlider;
-    int BxVal= 0;
-    int ByVal=0;
-    JTextField CxTxtField;
-    JTextField CyTxtField;
-    JLabel CLabel;
-    JLabel CxLabel;
-    JLabel CyLabel;
-    JSlider CxSlider;
-    JSlider CySlider;
-    int CxVal=0;
-    int CyVal=0;
-    JTextField DxTxtField;
-    JTextField DyTxtField;
-    JLabel DLabel;
-    JLabel DxLabel;
-    JLabel DyLabel;
-    JSlider DxSlider;
-    JSlider DySlider;
-    int DxVal=0;
-    int DyVal=0;
-    JButton startCalc;
-    JButton Reset;
-    AnimationPanel AniPanel = new AnimationPanel();
-    Double dblArea = 0.0;
-    Double dblPeri = 0.0;
-    JLabel ResultsArea;
-    JLabel ResultsPeri;
+    public JFrame theframe = new JFrame("Quadralateral Coordinate Calculator Program");
+    public JPanel thepanel = new JPanel();
+    public JMenuBar menuBar = new JMenuBar();
+    public JMenu homeMenu = new JMenu("Home");
+    public JMenu helpMenu = new JMenu("Help");
+    public JPanel helpPanel = new JPanel();
+    public JMenu aboutMenu = new JMenu("About");
+    public JPanel aboutPanel = new JPanel();
+    public JMenu quizMenu = new JMenu("Quiz");
+    public JPanel quizPanel = new JPanel();
+    public JMenu scoresMenu = new JMenu("Scores");
+    public JPanel scoresPanel = new JPanel();
+    public Timer theTimer = new Timer(1000/48,this);
+    public JTextField AxTxtField;
+    public JTextField AyTxtField;
+    public JLabel ALabel;
+    public JLabel AxLabel;
+    public JLabel AyLabel;
+    public JSlider AxSlider;
+    public JSlider AySlider;
+    public int AxVal = 0;
+    public int AyVal =0 ;
+    public JTextField BxTxtField;
+    public JTextField ByTxtField;
+    public JLabel BLabel;
+    public JLabel BxLabel;
+    public JLabel ByLabel;
+    public JSlider BxSlider;
+    public JSlider BySlider;
+    public int BxVal= 0;
+    public int ByVal=0;
+    public JTextField CxTxtField;
+    public JTextField CyTxtField;
+    public JLabel CLabel;
+    public JLabel CxLabel;
+    public JLabel CyLabel;
+    public JSlider CxSlider;
+    public JSlider CySlider;
+    public int CxVal=0;
+    public int CyVal=0;
+    public JTextField DxTxtField;
+    public JTextField DyTxtField;
+    public JLabel DLabel;
+    public JLabel DxLabel;
+    public JLabel DyLabel;
+    public JSlider DxSlider;
+    public JSlider DySlider;
+    public int DxVal=0;
+    public int DyVal=0;
+    public JButton startCalc;
+    public JButton Reset;
+    public AnimationPanel AniPanel = new AnimationPanel();
+    public Double dblArea = 0.0;
+    public Double dblPeri = 0.0;
+    public JLabel ResultsArea;
+    public JLabel ResultsPeri;
 
-    JLabel quizTitleLabel;
-    JLabel questionLabel1, questionLabel2, questionLabel3, questionLabel4;
-    JRadioButton optionA1, optionB1, optionC1, optionD1;
-    JRadioButton optionA2, optionB2, optionC2, optionD2;
-    JRadioButton optionA3, optionB3, optionC3, optionD3;
-    JRadioButton optionA4, optionB4, optionC4, optionD4;
-    JTextField nameField;
-    JLabel scoreLabel;
-    JLabel nameLabel;
-    JButton submitButton;
-    JButton tryagainButton;
-    ButtonGroup group1;
-    ButtonGroup group2;
-    ButtonGroup group3;
-    ButtonGroup group4;
-    int intscore = 0;
+    public JLabel quizTitleLabel;
+    public JLabel questionLabel1, questionLabel2, questionLabel3, questionLabel4;
+    public JRadioButton optionA1, optionB1, optionC1, optionD1;
+    public JRadioButton optionA2, optionB2, optionC2, optionD2;
+    public JRadioButton optionA3, optionB3, optionC3, optionD3;
+    public JRadioButton optionA4, optionB4, optionC4, optionD4;
+    public JTextField nameField;
+    public JLabel scoreLabel;
+    public JLabel nameLabel;
+    public JButton submitButton;
+    public JButton tryagainButton;
+    public ButtonGroup group1;
+    public ButtonGroup group2;
+    public ButtonGroup group3;
+    public ButtonGroup group4;
+    public int intscore = 0;
 
-    PrintWriter txtscores;
-    BufferedReader txtscoresOut;
+    public PrintWriter txtscores;
+    public BufferedReader txtscoresOut;
 
-    JTextArea scoresTextArea;
-    JScrollPane scoresScroll;
-    String strLine;
-    JLabel scoreTitleLabel;
-    
-    
+    public JTextArea scoresTextArea;
+    public JScrollPane scoresScroll;
+    public String strLine;
+    public JLabel scoreTitleLabel;
+
+    public JLabel imgAboutLabel;
+    public JLabel imgHelpLabel;
  
     //Methods
     public void actionPerformed(ActionEvent evt){
@@ -356,7 +357,6 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         //submit button for quiz
         else if(evt.getSource() == submitButton){
             scoreLabel.setText("Score: "+intscore+"  /  4");
-
             try{
                 txtscores= new PrintWriter(new FileWriter("scores.txt",true));
                 txtscores.println(nameField.getText()+" "+intscore+"/4");
@@ -458,12 +458,12 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         else if(evt.getSource() == scoresMenu){
             System.out.println("scores menu");
             theframe.setContentPane(scoresPanel);
+            scoresTextArea.setText("");
 
             try{
                 txtscoresOut = new BufferedReader(new FileReader("scores.txt"));
                 strLine = txtscoresOut.readLine();
                 while(strLine != null){
-                    System.out.println(strLine);
                     scoresTextArea.append(strLine+"\n");
                     strLine=txtscoresOut.readLine();
                 }
@@ -830,28 +830,28 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
         group2.add(optionD2);
 
         //question3
-        questionLabel3 = new JLabel("3. To find the perimeter of a quadrailateral in the Cartesian plane, what is the correct sequence of steps?:");
-        questionLabel3.setSize(500,15);
+        questionLabel3 = new JLabel("3. To find the perimeter of a quadrailateral in the Cartesian plane, what is the correct sequence of steps?");
+        questionLabel3.setSize(700,15);
         questionLabel3.setLocation(20,280);
         quizPanel.add(questionLabel3);
 
         optionA3 = new JRadioButton("A: calculate the sum of the lengths of all four sides");
-        optionA3.setSize(400,15);
+        optionA3.setSize(500,15);
         optionA3.setLocation(20,300);
         quizPanel.add(optionA3);
         
         optionB3 = new JRadioButton("B: Subtract each x and y coordinate and add the difference");
-        optionB3.setSize(400,15);
+        optionB3.setSize(500,15);
         optionB3.setLocation(20,320);
         quizPanel.add(optionB3);
 
         optionC3 = new JRadioButton("C: multiply he lengths of oppostie sides and add them together");
-        optionC3.setSize(400,15);
+        optionC3.setSize(500,15);
         optionC3.setLocation(20,340);
         quizPanel.add(optionC3);
         
         optionD3 = new JRadioButton("D: Find the distrance between each pair of points, then add them");
-        optionD3.setSize(400,15);
+        optionD3.setSize(500,15);
         optionD3.setLocation(20,360);
         optionD3.addActionListener(this);
         quizPanel.add(optionD3);
@@ -905,7 +905,7 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
 
         scoreLabel = new JLabel("Score: 0  /  4");
         scoreLabel.setSize(100,20);
-        scoreLabel.setLocation(800,450);
+        scoreLabel.setLocation(813,450);
         quizPanel.add(scoreLabel);
 
         nameLabel = new JLabel("Name: ");
@@ -948,6 +948,18 @@ public class CoordArea implements ActionListener, ChangeListener, MouseListener{
 
         //Starttimer
         theTimer.start();
+
+        //About image only showing for the about Panel
+        imgAboutLabel = new JLabel();
+        imgAboutLabel.setIcon(new ImageIcon(AniPanel.imgAbout));
+        imgAboutLabel.setVisible(true);
+        aboutPanel.add(imgAboutLabel);
+
+        //Help Image only showing for the help Panel
+        imgHelpLabel = new JLabel();
+        imgHelpLabel.setIcon(new ImageIcon(AniPanel.imgHelp));
+        imgHelpLabel.setVisible(true);
+        helpPanel.add(imgHelpLabel);
 
         //adding the animation panel
         thepanel.add(AniPanel);
