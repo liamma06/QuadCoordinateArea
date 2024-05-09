@@ -6,6 +6,7 @@ import java.awt.image.*;
 
 public class AnimationPanel extends JPanel{
     //Properties
+    /**  */
     public int PointAx = 530/2 +400;
     public int PointAy = 530/2;
     public int PointBx = 530/2 + 400;
