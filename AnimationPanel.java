@@ -41,10 +41,37 @@ public class AnimationPanel extends JPanel{
     /**integer holding pixels between each tick of the grpah */
     public int GraphTickSpacing = 30;
     /**variable holding the about image */
-    BufferedImage imgAbout;
-    /**variable holding the help image */
-    BufferedImage imgHelp;
+    public BufferedImage imgAbout;
 
+    /**variable holding the help image */
+    public BufferedImage imgHelp;
+
+
+    public BufferedImage loadImage(String strFilename){  
+        // Try to read the file from the jar file
+        InputStream imageclass = null;
+        imageclass = this.getClass().getResourceAsStream(strFilename+".jpg");
+        if(imageclass == null){
+          //System.out.println("Unable to load image file: \""+strFilename+"\"");
+         //return null;
+        }else{
+          try{
+            return ImageIO.read(imageclass);
+          }catch(IOException e){
+            //System.out.println(e.toString());
+            //System.out.println("Unable to load image file: \""+strFileName+"\"");
+            //return null;
+          }
+        }
+        // Then try to read the local file
+        try{
+          BufferedImage theImage = ImageIO.read(new File(strFilename+".jpg"));
+          return theImage;
+        }catch(IOException e){
+          System.out.println("Unable to load local image file: \""+strFilename+"\"");
+          return null;
+        }
+      }
 
     //Methods
     /**Drawing the cartesian plane and updating each point */
@@ -118,14 +145,8 @@ public class AnimationPanel extends JPanel{
     public AnimationPanel(){
         super();
         //inputing the about.jpg and help.png
-        try{
-			imgAbout = ImageIO.read(new File("about.jpg"));
-            imgHelp = ImageIO.read(new File("help.png"));
-		}catch(IOException e){
-			System.out.println("Unable to load image");
-			System.out.println(e.toString());
-		}
-        
+        imgAbout = loadImage("about"); 
+        imgHelp = loadImage("help");
 
     }
 }
