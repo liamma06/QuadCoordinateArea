@@ -46,7 +46,7 @@ public class AnimationPanel extends JPanel{
     /**variable holding the help image */
     public BufferedImage imgHelp;
 
-
+    /**allowing Jar file to contian the images  */
     public BufferedImage loadImage(String strFilename){  
         // Try to read the file from the jar file
         InputStream imageclass = null;
